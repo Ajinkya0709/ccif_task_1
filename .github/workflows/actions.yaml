@@ -20,6 +20,8 @@ jobs:
             const labels = context.payload.pull_request.labels.map(label => label.name);
             const labelChanged = labels.includes('merged');
 
+            console.log('Label changed:', labelChanged);
+
             return { labelChanged: labelChanged };
 
       - name: Trigger Jenkins Job
@@ -28,9 +30,4 @@ jobs:
           JENKINS_API_TOKEN: '110762353b227d09d0fcfd22f1b87d99e7'
           JENKINS_JOB_URL: 'https://nice-hoops-vanish.loca.lt/job/CCIF_task_1/'
         run: |
-          if ($env:labelChanged -eq "true") {
-            echo "Label changed. Triggering Jenkins job..."
-            Invoke-WebRequest -Method POST -Uri $env:JENKINS_JOB_URL -Headers @{ Authorization = "Basic $env:JENKINS_API_TOKEN" }
-          } else {
-            echo "Label not changed. Skipping Jenkins job trigger."
-          }
+          Invoke-WebRequest -Method POST -Uri $env:JENKINS_JOB_URL -Headers @{ Authorization = "Basic $env:JENKINS_API_TOKEN" }
