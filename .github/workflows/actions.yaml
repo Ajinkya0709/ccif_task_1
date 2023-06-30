@@ -25,7 +25,7 @@ jobs:
       - name: Trigger Jenkins Job
         if: steps.label_changed.outputs.labelChanged
         env:
-          JENKINS_API_TOKEN:'12345678'
+          JENKINS_API_TOKEN: '12345678'
           JENKINS_JOB_URL: 'http://localhost:8080/job/CCIF_task_1/'
         run: |
           Invoke-WebRequest -Method POST -Uri $env:JENKINS_JOB_URL -Headers @{ Authorization = "Basic $env:JENKINS_API_TOKEN" }
