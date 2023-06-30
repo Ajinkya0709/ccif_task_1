@@ -25,8 +25,6 @@ jobs:
       - name: Trigger Jenkins Job
         env:
           JENKINS_API_TOKEN: '110762353b227d09d0fcfd22f1b87d99e7'
-          JENKINS_JOB_URL: 'http://localhost:8080/job/CCIF_task_1/'
+          JENKINS_JOB_URL: 'https://nice-hoops-vanish.loca.lt/job/CCIF_task_1/'
         run: |
-          echo "Label changed. Triggering Jenkins job..."
-          echo "Invoke-WebRequest -Method POST -Uri $env:JENKINS_JOB_URL -Headers @{ Authorization = `"Basic $env:JENKINS_API_TOKEN`" }" > trigger_jenkins.ps1
-          powershell.exe -File trigger_jenkins.ps1
+          curl -I -u BuildUser:110762353b227d09d0fcfd22f1b87d99e7 "https://nice-hoops-vanish.loca.lt/job/CCIF_task_1/build?token=110762353b227d09d0fcfd22f1b87d99e7"
