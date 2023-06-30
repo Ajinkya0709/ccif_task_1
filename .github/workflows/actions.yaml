@@ -23,14 +23,10 @@ jobs:
             return { labelChanged: labelChanged };
 
       - name: Trigger Jenkins Job
-        if: steps.label_changed.outputs.labelChanged
         env:
           JENKINS_API_TOKEN: '110762353b227d09d0fcfd22f1b87d99e7'
           JENKINS_JOB_URL: 'https://nice-hoops-vanish.loca.lt/job/CCIF_task_1/'
         run: |
-          if [ "${{ steps.label_changed.outputs.labelChanged }}" = "true" ]; then
-            echo "Label changed. Triggering Jenkins job..."
-            Invoke-WebRequest -Method POST -Uri $env:JENKINS_JOB_URL -Headers @{ Authorization = "Basic $env:JENKINS_API_TOKEN" }
-          else
-            echo "Label not changed. Skipping Jenkins job trigger."
-          fi
+          echo "Label changed. Triggering Jenkins job..."
+          echo "Invoke-WebRequest -Method POST -Uri $env:JENKINS_JOB_URL -Headers @{ Authorization = `"Basic $env:JENKINS_API_TOKEN`" }" > trigger_jenkins.ps1
+          powershell.exe -File trigger_jenkins.ps1
