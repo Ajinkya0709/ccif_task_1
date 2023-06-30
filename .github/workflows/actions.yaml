@@ -26,6 +26,6 @@ jobs:
         if: steps.label_changed.outputs.labelChanged
         env:
           JENKINS_API_TOKEN: '110762353b227d09d0fcfd22f1b87d99e7'
-          JENKINS_JOB_URL: 'https://cold-cars-jog.loca.lt/job/CCIF_task_1/'
+          JENKINS_JOB_URL: 'https://nice-hoops-vanish.loca.lt/job/CCIF_task_1/'
         run: |
           Invoke-WebRequest -Method POST -Uri $env:JENKINS_JOB_URL -Headers @{ Authorization = "Basic $env:JENKINS_API_TOKEN" }
