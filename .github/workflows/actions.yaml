@@ -25,6 +25,6 @@ jobs:
       - name: Trigger Jenkins Job
         env:
           JENKINS_API_TOKEN: '110762353b227d09d0fcfd22f1b87d99e7'
-          JENKINS_JOB_URL: 'https://nice-hoops-vanish.loca.lt/job/CCIF_task_1/'
+          JENKINS_JOB_URL: 'https://fifty-jeans-create.loca.lt/job/CCIF_task_1/'
         run: |
-          curl -I -u BuildUser:110762353b227d09d0fcfd22f1b87d99e7 "https://nice-hoops-vanish.loca.lt/job/CCIF_task_1/build?token=110762353b227d09d0fcfd22f1b87d99e7"
+          curl -I -u BuildUser:110762353b227d09d0fcfd22f1b87d99e7 "https://fifty-jeans-create.loca.lt/job/CCIF_task_1/build?token=110762353b227d09d0fcfd22f1b87d99e7"
