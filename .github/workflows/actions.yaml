@@ -25,7 +25,7 @@ jobs:
       - name: Trigger Jenkins Job
         if: steps.check_label.outputs.label == 'Check'
         run: |
-          JENKINS_JOB_URL=${{ secrets.JENKINS_URL }}
+          JENKINS_JOB_URL=${{ secrets.JENKINS_JOB_URL }}
           JENKINS_USERNAME=${{ secrets.JENKINS_USERNAME }}
           JENKINS_TOKEN=${{ secrets.JENKINS_API_TOKEN }}
 
