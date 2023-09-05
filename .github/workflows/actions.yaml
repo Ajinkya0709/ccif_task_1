@@ -38,6 +38,7 @@ jobs:
 
           # Construct the Jenkins job URL with parameters
           JOB_URL="${JENKINS_JOB_URL}/job/${JOB_NAME}/buildWithParameters?REPO_NAME=${{ github.repository }}&PR_NUMBER=${{ github.event.pull_request.number }}"
+          echo ::urltotrigger=::${{ JOB_URL }}
 
  
 
