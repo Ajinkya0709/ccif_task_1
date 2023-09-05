@@ -1,27 +1,14 @@
 branches:
-
   - target: main
-
     jobs:
-
       - job:
-
           url: http://localhost:8080/job/CCIF_task_1/
-
-        triggers:
-
-          - pull_request:
-
-              labels:
-
-                - check
-
-          - pull_request:
-
-              require:
-
-                review: true
-
-              labels:
-
-                - merge
+          triggers:
+            - pull_request:
+                labels:
+                  - check
+            - pull_request:
+                require:
+                  review: true
+                labels:
+                  - merge
