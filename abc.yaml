@@ -1,0 +1,77 @@
+branches:
+
+  - target: master
+
+    jobs:
+
+      - job:
+
+          url: https://jenkins-vw-mqb-23-gw-bsl.cmo.conti.de/job/sw.sys.gw-main-build/
+
+        triggers:
+
+          - pull_request:
+
+              labels:
+
+                - check
+
+          - pull_request:
+
+              require:
+
+                review: true
+
+              labels:
+
+                - merge
+
+      - job:
+
+          url: https://jenkins-vw-mqb-23-gw-bsl.cmo.conti.de/job/sw.sys.gw-main-delivery/
+
+        triggers:
+
+          - pull_request:
+
+              labels:
+
+                - delivery            
+
+  - target: /release\/.*/  
+
+    jobs:
+
+      - job:
+
+          url: https://jenkins-vw-mqb-23-gw-bsl.cmo.conti.de/job/sw.sys.gw-main-build/
+
+        triggers:
+
+          - pull_request:
+
+              labels:
+
+                - check
+
+          - pull_request:
+
+              require:
+
+                review: true
+
+              labels:
+
+                - merge
+
+      - job:
+
+          url: https://jenkins-vw-mqb-23-gw-bsl.cmo.conti.de/job/sw.sys.gw-main-delivery/
+
+        triggers:
+
+          - pull_request:
+
+              labels:
+
+                - delivery
